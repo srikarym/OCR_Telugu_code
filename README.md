@@ -1,1 +1,1 @@
-# OCR_Telugu_code
+# Code for Telugu OCR
