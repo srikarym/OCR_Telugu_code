@@ -20,16 +20,16 @@ python OCR.py
 
 ## Training 
 ### Main Character
-- Set file name h5_file_location = 'YOURPATH/final_dataset.hdf5'
+- Set file name training_testing/main_character/model_code.py, h5_file_location = 'YOURPATH/final_dataset.hdf5'
 ```bash
-cd OCR_Telugu_code/main_character
+cd OCR_Telugu_code/training_testing/main_character
 python model_code.py
 ```
 
 ### Vattu Gunintam
-- Set file name h5_file_location = 'YOURPATH/final_dataset.hdf5'
+- Set file name in training_testing/vattu_gunintam/model_code.py, h5_file_location = 'YOURPATH/final_dataset.hdf5'
 ```bash
-cd OCR_Telugu_code/vattu_gunintam
+cd OCR_Telugu_code/training_testing/vattu_gunintam
 python model_code.py
 ```
 
