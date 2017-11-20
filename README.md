@@ -1,17 +1,43 @@
-# Code for Telugu OCR
+# CNN based approach to Telugu OCR
+
+<p align="center">
+  <img src="example.png">
+</p>
+
+Here the code for CNN based approach to Telugu OCR paper is avalilable.
+
+Tested on 64 bit Linux.
+
+## Usage
+```bash
+git clone https://github.com/GayamTrishal/OCR_Telugu_code.git
+cd OCR_Telugu_code/vattu_gunintam/ours/
+unzip model_v_g_weights.hdf5.zip
+cd ../../..
+cd OCR_Telugu_code/code
+python OCR.py
+```
+
+## Training 
+### Main Character
+- Set file name h5_file_location = 'YOURPATH/final_dataset.hdf5'
+```bash
+cd OCR_Telugu_code/main_character
+python model_code.py
+```
+
+### Vattu Gunintam
+- Set file name h5_file_location = 'YOURPATH/final_dataset.hdf5'
+```bash
+cd OCR_Telugu_code/vattu_gunintam
+python model_code.py
+```
+
+## Trained Models
+Information on trained models can be found [here](https://github.com/GayamTrishal/OCR_Telugu_code/tree/master/models).
 
 ## Requirements
-* Keras
-* OpenCV 3.0.0 version (currently only supports this.)
-* Skimage
-* Numpy
-
-## Running Instructions
-* Git clone
-* Run the OCR.py file through terminal.
-* The testing image img.jpg can be replaced.
-* All the outputs are stored in output folder.
-  * Segmented characters.
-  * Region segmentation.
-  * HTML output file.
-  * Audio of the text.
+- Keras
+- OpenCV 3.0.0 version (currently only supports this.)
+- Skimage
+- Numpy
