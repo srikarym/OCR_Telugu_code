@@ -1,7 +1,7 @@
 # Code for Telugu OCR
 
 ## Requirements
-* Kerberose
+* Keras
 * OpenCV 3.0.0.1 version
 
 ## Running Instructions
