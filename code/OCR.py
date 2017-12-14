@@ -26,9 +26,9 @@ import struct
 import charSegmentation
 import utils
 
-############################################################################################################################## 
+##############################################################################################################################
 # Model and some files loading part
-############################################################################################################################## 
+##############################################################################################################################
 
 def file_char_vattu_gunintam(file_name):
     file_1 = open(file_name,'r')
@@ -73,10 +73,10 @@ model_2.load_weights('/models/vattu_gunintam/ours/model_1_v_g_weights.hdf5')
 print 'Loaded Model File!!!'
 
 while(1):
-    
-############################################################################################################################## 
+
+##############################################################################################################################
 # Image Processing and recognition part
-############################################################################################################################## 
+##############################################################################################################################
 
     file_name = 'img.jpg'
     img = np.asarray(cv2.imread(file_name,0))
@@ -115,7 +115,7 @@ while(1):
         max_1 = np.amax(kk[:,0])
         min_2 = np.amin(kk[:,1])
         max_2 = np.amax(kk[:,1])
-        ratio = float(len(regions[i]))/((max_2-min_2)*(max_1-min_1))       
+        ratio = float(len(regions[i]))/((max_2-min_2)*(max_1-min_1))
         if max_2==min_2 or max_1==min_1:
             bool_idx.append(False)
         else:
@@ -156,9 +156,9 @@ while(1):
 
     for i in xrange(len(cnts)):
         x,y,w,h = cv2.boundingRect(cnts[i])
-        
+
         include = True
-        
+
         for j in xrange(len(cnts)):
             if j!= i:
                 x1,y1,w1,h1 = cv2.boundingRect(cnts[j])
@@ -168,7 +168,7 @@ while(1):
         if (h>2*appx_size or w>2*appx_size or w*h>100) and include:
             cv2.rectangle(out_image_6,(x,y),(x+w,y+h),(255),3)
             regions1.append([x,y,w,h])
-            
+
     cv2.imwrite('output/region_seg.png',out_image_6)
     regions1 = np.array(regions1)
     regions1 = regions1[np.argsort(regions1[:, 1])]
@@ -186,7 +186,7 @@ while(1):
             regions2[line_idx].append(regions1[i])
         else:
             line_idx = line_idx + 1
-            regions2[line_idx].append(regions1[i]) 
+            regions2[line_idx].append(regions1[i])
     regions2 = np.array(regions2)
     regions2 = [x for x in regions2 if x != []]
 
@@ -194,7 +194,7 @@ while(1):
         newline = np.array(regions2[i])
         newline = newline[np.argsort(newline[:, 0])]
         regions2[i] = newline
-    new_regions = []    
+    new_regions = []
     for i in xrange( len(regions2)):
         for j in xrange(len(regions2[i])):
             new_regions.append(regions2[i][j])
@@ -218,7 +218,7 @@ while(1):
             if min_1-max_1 > ((new_regions_3[i][3]) + (new_regions_3[j][3]))/4.0:
                 line_idx[i,j] = 1
 
-    new_regions_update = []    
+    new_regions_update = []
 
     indexer = np.zeros(len(new_regions_3))
     for i in xrange(len(new_regions_3)):
@@ -267,7 +267,7 @@ while(1):
             Text_regions.append(Text_regions1[j])
             if j!=len(positions1)-1:
                 k.append(0)
-        
+
         if not (len(positions1)<1):
             k.append(1)
 
@@ -321,8 +321,8 @@ while(1):
             vattu_gunintam.append(-1)
 
     file = open('output/result.html','w')
-    
-    # writing output in html format 
+
+    # writing output in html format
 
     for i in xrange(len(chars)):
         if i>0:
@@ -335,11 +335,8 @@ while(1):
             file.write(vattu_2[int(vattu_gunintam[i])-1][:-1])
 
     file.close()
-    
+
     # processing of speech
     os.system("espeak -m -v te -s 100 -f output/result.html -w output/speech.wav")
-    
+
     break
-
-
-
