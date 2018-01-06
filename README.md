@@ -11,7 +11,7 @@ Tested on 64 bit Linux.
 ## Usage
 ```bash
 git clone https://github.com/GayamTrishal/OCR_Telugu_code.git
-cd OCR_Telugu_code/vattu_gunintam/ours/
+cd OCR_Telugu_code/models/vattu_gunintam/ours/
 unzip model_v_g_weights.hdf5.zip
 cd ../../..
 cd OCR_Telugu_code/code
