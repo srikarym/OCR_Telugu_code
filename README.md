@@ -44,3 +44,7 @@ Information on trained models can be found [here](https://github.com/GayamTrisha
 
 ## Dataset
 Dataset used can be downloaded [here](https://drive.google.com/file/d/1ucYy_Emht9MRLjQPaUydSKZzN1ZQ77dd/view).
+
+## Testing on sample image
+Replace img.jpg inside OCR_Telugu_code/code folder with your image and run the code. The result will be stored in OCR_Telugu_code/code/output folder.
+
