@@ -1,2 +1,5 @@
-Test Accuracy  :  0.987405063618
+Test Accuracy  
 
+TCCNN-S :  97.95
+
+TCCNN-L :  98.74
