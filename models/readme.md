@@ -15,7 +15,11 @@ All the final models are there in these folders.
 The following are the accuracies for each model :-
 
 <p align="center">
-  <img src="accuracies.png">
+  <img src="accuracies-character.png">
+</p>
+
+<p align="center">
+  <img src="accuracies-vattu.png">
 </p>
 
 Note: Model has been slightly modified for Cifar and Lenet to accomodate output classes but the basic Conv structure is kept intact.
