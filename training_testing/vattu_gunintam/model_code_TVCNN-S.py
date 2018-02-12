@@ -85,62 +85,32 @@ with tf.device('/gpu:0'):
 
     num_classes = Y_val.shape[1]
     
-    # model = keras.models.Sequential()
-    # model.add(keras.layers.convolutional.Convolution2D(32,3,3,input_shape=(1,32,32),border_mode='same',activation='relu',W_constraint=maxnorm(3)))
-    # model.add(keras.layers.convolutional.MaxPooling2D(pool_size=(2,2)))
-    # model.add(keras.layers.Dropout(0.2))
-    # model.add(keras.layers.convolutional.Convolution2D(16,3,3,activation='relu',border_mode='same',W_constraint=maxnorm(3)))
-    # model.add(keras.layers.convolutional.MaxPooling2D(pool_size=(2,2)))
-    # model.add(keras.layers.Flatten())
-    # model.add(keras.layers.Dense(256,activation='relu',W_constraint=maxnorm(3)))
-    # model.add(keras.layers.Dropout(0.3))
-    # model.add(keras.layers.Dense(128,activation='relu',W_constraint=maxnorm(3)))
-    # model.add(keras.layers.Dropout(0.3))
-    # model.add(keras.layers.Dense(num_classes,activation='softmax'))
-    # model.load_weights("model_1_chars_weights.hdf5")
+
     # Create a Model
     model = keras.models.Sequential()
     model.add(keras.layers.convolutional.Conv2D(25,(3,3),input_shape=(1,32,32),padding='same',activation='relu',W_constraint=maxnorm(3)))
     model.add(keras.layers.convolutional.MaxPooling2D(pool_size=(2,2)))
-    # model.add(keras.layers.Dropout(0.2))
     model.add(keras.layers.convolutional.Conv2D(20,(3,3),activation='relu',padding='same',W_constraint=maxnorm(3)))
     model.add(keras.layers.convolutional.MaxPooling2D(pool_size=(2,2)))
-    # model.add(keras.layers.convolutional.Conv2D(40,(3,3),activation='relu',padding='same',W_constraint=maxnorm(3)))
-    # model.add(keras.layers.convolutional.MaxPooling2D(pool_size=(2,2)))
-    # model.add(keras.layers.convolutional.Conv2D(50,(3,3),activation='relu',padding='same',W_constraint=maxnorm(3)))
     model.add(keras.layers.Flatten())
     model.add(keras.layers.Dense(256,activation='relu',W_constraint=maxnorm(3)))
-    # model.add(keras.layers.Dense(512,activation='relu',W_constraint=maxnorm(3)))
     model.add(keras.layers.Dropout(0.2))
     model.add(keras.layers.Dense(num_classes,activation='softmax'))
-    # model.load_weights("model_8_chars_weights.hdf5")
-    # model.load_weights("model_1_v_g_weights.hdf5")
 
     json_txt = model.to_json()
-    # print json_txt
-    with open('model_1_v_g.json','w') as outfile:
+    with open('model_code_TVCNN-S.json','w') as outfile:
       json.dump(json_txt,outfile)
     outfile.close()
 
-    # model_json = model.to_json()
-    # with open("model2.json", "w") as json_file:
-    #     json_file.write(model_json)
-    
     # Compile Model
-    epochs = 25
+    epochs = 40
     lrate = 0.01
     decay = lrate/epochs
-    # opt = SGD(lr=lrate,momentum=0.9,decay=decay,nesterov=False)
-    # opt = SGD(lr=lrate,momentum=0.9,decay=decay,nesterov=True)
-    # opt = keras.optimizers.Adagrad(lr=0.01, epsilon=1e-08, decay=0.0)
-    # opt = keras.optimizers.Adadelta(lr=1.0, rho=0.95, epsilon=1e-08, decay=0.0)
     opt = keras.optimizers.Adam(lr=0.001, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-    # opt = keras.optimizers.Adamax(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=1e-08, decay=0.0)
-    # opt = keras.optimizers.Nadam(lr=0.002, beta_1=0.9, beta_2=0.999, epsilon=1e-08, schedule_decay=0.004)
     model.compile(loss='categorical_crossentropy',optimizer=opt,metrics=['accuracy'])
     print model.summary()
 
-    filepath="model_1_v_g_weights.hdf5"
+    filepath="model_code_TVCNN-S.hdf5"
     checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
     callbacks_list = [checkpoint]
 
