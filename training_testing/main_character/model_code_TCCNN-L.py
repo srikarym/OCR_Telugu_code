@@ -103,7 +103,7 @@ with tf.device('/gpu:0'):
 
     # Write to JSON Model
     json_txt = model.to_json()
-    with open('model_chars.json','w') as outfile:
+    with open('model_code_TCCNN-L.json','w') as outfile:
       json.dump(json_txt,outfile)
     outfile.close()
 
@@ -113,7 +113,7 @@ with tf.device('/gpu:0'):
     print model.summary()
 
     # Output Weights 
-    filepath="model_chars_weights.hdf5"
+    filepath="model_code_TCCNN-L.hdf5"
     checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=1, save_best_only=True, mode='max')
     callbacks_list = [checkpoint]
 
