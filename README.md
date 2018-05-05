@@ -4,6 +4,8 @@
   <img src="example.png">
 </p>
 
+#### Our paper is accepted at IEEE International Conference On Image Processing (ICIP) 2018, Greece.
+
 Here the code for CNN based approach to Telugu OCR paper is avalilable.
 
 Tested on 64 bit Linux.
