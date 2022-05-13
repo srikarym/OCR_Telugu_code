@@ -10,6 +10,8 @@ Here the code for CNN based approach to Telugu OCR paper is avalilable.
 
 Tested on 64 bit Linux.
 
+## Note: This package is old and not being maintained
+
 ## Usage
 ```bash
 git clone https://github.com/GayamTrishal/OCR_Telugu_code.git
